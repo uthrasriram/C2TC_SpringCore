@@ -1,0 +1,63 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Bean for a book titled "Java Programming" authored by "John Doe" -->
+    <bean id="book1" class="org.tnsif.springdi.Book">
+        <constructor-arg value="Java Programming" />
+        <constructor-arg value="John Doe" />
+        <constructor-arg value="101" />
+    </bean>
+
+    <!-- Bean for a book titled "Spring Framework" authored by "Jane Smith" -->
+    <bean id="book2" class="org.tnsif.springdi.Book">
+        <constructor-arg value="Spring Framework" />
+        <constructor-arg value="Jane Smith" />
+		<constructor-arg value="102" />
+    </bean>
+
+    <!-- Bean for a book titled "Hibernate in Action" authored by "Alice Johnson" -->
+    <bean id="book3" class="org.tnsif.springdi.Book">
+        <constructor-arg value="Hibernate in Action" />
+        <constructor-arg value="Alice Johnson" />
+        <constructor-arg value="103" />
+    </bean>
+   
+    <!-- Bean for a book titled "Microservices Architecture" authored by "Robert Martin" by using name-->
+    <bean name="book4,book8" class="org.tnsif.springdi.Book">
+        <constructor-arg value="Microservices Architecture" />
+        <constructor-arg value="Robert Martin" />
+        <constructor-arg value="104" />
+    </bean>
+
+	<!-- Department Bean -->
+    <bean id="dept1" class="org.tnsif.springdi.Department">
+        <property name="departmentName" value="Library Department"/>
+    </bean>
+
+    <!-- Book Bean with Constructor Injection -->
+    <bean id="book11" class="org.tnsif.springdi.Book">
+        <constructor-arg ref="dept1"/>
+    </bean>
+
+    <!-- Bean for a book titled "Advanced Java" authored by "Brian Kernighan" using c-namespace -->
+    <bean id="book5" class="org.tnsif.springdi.Book" 
+          c:_0="Advanced Java" 
+          c:_1="Brian Kernighan"
+          c:_2="105"/>
+
+    <!-- Library bean that contains a list of books -->
+    <bean id="library" class="org.tnsif.springdi.Library">
+        <constructor-arg>
+            <list>
+				<ref bean="book1" /> <!-- Reference to book1 -->
+                <ref bean="book2" /> <!-- Reference to book2 -->
+                <ref bean="book3" /> <!-- Reference to book3 -->
+              <!-- <idref bean="book4" /> --><!-- Alternative way Reference to book4 -->
+                <ref bean="book5"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>

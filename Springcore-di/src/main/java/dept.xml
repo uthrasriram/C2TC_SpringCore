@@ -1,0 +1,68 @@
+ <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Employee Beans -->
+    <bean id="emp1" class="org.tnsif.springdi.Employee">
+        <property name="id" value="101"/>
+        <property name="name" value="Alice"/>
+        <property name="salary" value="50000"/>
+        <property name="check" value="true"/>
+    </bean>
+
+    <bean id="emp2" class="org.tnsif.springdi.Employee">
+        <property name="id" value="102"/>
+        <property name="name" value="Bob"/>
+        <property name="salary" value="60000"/>
+        <property name="check" value="true"/>
+    </bean>
+
+    <bean id="emp3" class="org.tnsif.springdi.Employee">
+        <property name="id" value="103"/>
+        <property name="name" value="Charlie"/>
+        <property name="salary" value="70000"/>
+        <property name="check" value="true"/>
+    </bean>
+
+    <!-- Employee Bean using p-namespace -->
+    <bean id="emp4" class="org.tnsif.springdi.Employee" 
+          p:id="104" 
+          p:name="David" 
+          p:salary="55000"
+          p:check="true"/>
+
+    <!-- Department Beans -->
+    <bean id="dept1" class="org.tnsif.springdi.Department">
+        <property name="departmentName" value="IT Department"/>
+        <property name="employeeList">
+            <list>
+                <ref bean="emp1"/>
+                <ref bean="emp2"/>
+                <ref bean="emp4"/> <!-- Include emp4 in the IT Department -->
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dept2" class="org.tnsif.springdi.Department">
+        <property name="departmentName" value="HR Department"/>
+        <property name="employeeList">
+            <list>
+				
+                <ref bean="emp3"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Company Bean -->
+    <bean id="company" class="org.tnsif.springdi.Company">
+        <property name="companyName" value="TechCorp"/>
+        <property name="departmentList">
+            <list>
+                <ref bean="dept1"/>
+                <ref bean="dept2"/>
+            </list>
+        </property>
+    </bean>
+</beans>

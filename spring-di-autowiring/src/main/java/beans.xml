@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="productOne" class="com.tnsif.sprin_DI_AutoWiring.Product">
+        <property name="productId" value="101"/>
+        <property name="productName" value="earphones"/>
+        <property name="price" value="900"/>
+    </bean>
+
+    <bean id="productTwo" class="com.tnsif.sprin_DI_AutoWiring.Product">
+        <property name="productId" value="102"/>
+        <property name="productName" value="Charger"/>
+        <property name="price" value="600"/>
+    </bean>
+
+    <bean id="productThree" class="com.tnsif.sprin_DI_AutoWiring.Product" scope="prototype">
+        <property name="productId" value="103"/>
+        <property name="productName" value="Power Bank"/>
+        <property name="price" value="1200"/>
+    </bean>
+
+    <bean id="productList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="productOne"/>
+                <ref bean="productTwo"/>
+                <ref bean="productThree"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="cartByType" class="com.tnsif.sprin_DI_AutoWiring.Cart" autowire="byType"/>
+
+    <bean id="cartByName" class="com.tnsif.sprin_DI_AutoWiring.Cart" autowire="byName"/>
+
+    <bean id="cart" class="com.tnsif.sprin_DI_AutoWiring.Cart">
+        <property name="productList" ref="productList"/>
+    </bean>
+
+</beans>
+
+
+    
+</beans>

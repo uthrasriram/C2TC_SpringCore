@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+	<bean id="student1" class="com.tnsif.spring_DI.Student">
+	    <property name="name" value="Aarav Mehta" />
+	    <property name="id" value="101" />
+	    <property name="email" value="aarav.mehta@example.com" />
+	    <property name="city" value="Mumbai" />
+	</bean>
+	
+	<bean id="student2" class="com.tnsif.spring_DI.Student">
+	    <property name="name" value="Sneha Reddy" />
+	    <property name="id" value="102" />
+	    <property name="email" value="sneha.reddy@example.com" />
+	    <property name="city" value="Hyderabad" />
+	</bean>
+	
+	<bean id="student3" class="com.tnsif.spring_DI.Student">
+	    <property name="name" value="Rohan Sharma" />
+	    <property name="id" value="103" />
+	    <property name="email" value="rohan.sharma@example.com" />
+	    <property name="city" value="Delhi" />
+	</bean>
+	
+	<bean id="student4" class="com.tnsif.spring_DI.Student">
+	    <property name="name" value="Priya Nair" />
+	    <property name="id" value="104" />
+	    <property name="email" value="priya.nair@example.com" />
+	    <property name="city" value="Kochi" />
+	</bean>
+	
+	<bean id="student5" class="com.tnsif.spring_DI.Student">
+	    <property name="name" value="Karan Singh" />
+	    <property name="id" value="105" />
+	    <property name="email" value="karan.singh@example.com" />
+	    <property name="city" value="Chandigarh" />
+	</bean>
+	
+	<bean id="student6" class="com.tnsif.spring_DI.Student">
+	    <property name="name" value="Ananya Gupta" />
+	    <property name="id" value="106" />
+	    <property name="email" value="ananya.gupta@example.com" />
+	    <property name="city" value="Pune" />
+	</bean>
+	
+	<bean id="student7" class="com.tnsif.spring_DI.Student">
+	    <property name="name" value="Vikram Das" />
+	    <property name="id" value="107" />
+	    <property name="email" value="vikram.das@example.com" />
+	    <property name="city" value="Kolkata" />
+	</bean>
+	
+	<bean id="student8" class="com.tnsif.spring_DI.Student">
+	    <property name="name" value="Meera Joshi" />
+	    <property name="id" value="108" />
+	    <property name="email" value="meera.joshi@example.com" />
+	    <property name="city" value="Bangalore" />
+	</bean>
+	
+	<bean id="dept1" class="com.tnsif.spring_DI.Department">
+	    <property name="name" value="aids" />
+	    <property name="studentList" >
+	    	<list>
+	    		<ref bean="student1"/>
+	    		<ref bean="student2"/>
+	    	</list>
+	    </property> 
+	</bean>
+	
+	<bean id="dept2" class="com.tnsif.spring_DI.Department">
+	    <property name="name" value="aiml" />
+	    <property name="studentList" >
+	    	<list>
+	    		<ref bean="student3"/>
+	    		<ref bean="student4"/>
+	    	</list>
+	    </property> 
+	</bean>
+	
+	<bean id="dept3" class="com.tnsif.spring_DI.Department">
+	    <property name="name" value="it" />
+	    <property name="studentList" >
+	    	<list>
+	    		<ref bean="student5"/>
+	    		<ref bean="student6"/>
+	    	</list>
+	    </property> 
+	</bean>
+
+	<bean id="dept4" class="com.tnsif.spring_DI.Department">
+	    <property name="name" value="cse" />
+	    <property name="studentList" >
+	    	<list>
+	    		<ref bean="student7"/>
+	    		<ref bean="student8"/>
+	    	</list>
+	    </property> 
+	</bean>		
+	
+	<bean id="college" class="com.tnsif.spring_DI.College">
+		<property name="name" value="IFET" />
+		<property name="departmentList">
+			<list>
+				<ref bean="dept1"/>
+				<ref bean="dept2"/>
+				<ref bean="dept3"/>
+				<ref bean="dept4"/>
+			</list>
+		</property>
+	</bean>
+		
+		
+</beans>
